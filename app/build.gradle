@@ -1,14 +1,16 @@
+import static org.gradle.api.Project.*
+
 apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 22
-    buildToolsVersion project.ANDROID_BUILD_TOOLS_VERSION
+    buildToolsVersion "22.0.1"
 
 
     defaultConfig {
         applicationId "siddhanta.wallpaperchanger"
         minSdkVersion 21
-        targetSdkVersion Integer.parseInt(project.ANDROID_BUILD_TARGET_SDK_VERSION)
+        targetSdkVersion 22
         versionCode 1
         versionName "1.0"
     }
@@ -23,4 +25,5 @@ android {
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     compile 'com.android.support:support-v13:22.1.1'
+    compile "com.android.support:appcompat-v7:22.2.1"
 }
