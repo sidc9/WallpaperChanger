@@ -18,7 +18,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.astuetz.PagerSlidingTabStrip;
+
 
 
 public class MainActivity extends Activity implements ActionBar.TabListener {
@@ -38,7 +38,7 @@ public class MainActivity extends Activity implements ActionBar.TabListener {
      * The {@link ViewPager} that will host the section contents.
      */
     ViewPager mViewPager;
-    private MyPagerAdapter adapter;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,20 +50,15 @@ public class MainActivity extends Activity implements ActionBar.TabListener {
         actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
 
 
-
-
-
         // Create the adapter that will return a fragment for each of the three
         // primary sections of the activity.
         mSectionsPagerAdapter = new SectionsPagerAdapter(getFragmentManager());
 
         // Set up the ViewPager with the sections adapter.
         mViewPager = (ViewPager) findViewById(R.id.pager);
-        //mViewPager.setAdapter(mSectionsPagerAdapter);
-        mViewPager.setAdapter(new TestAdapter(getFragmentManager()));
+        mViewPager.setAdapter(mSectionsPagerAdapter);
 
-        PagerSlidingTabStrip tabs = (PagerSlidingTabStrip) findViewById(R.id.tabs);
-        tabs.setViewPager(mViewPager);
+
         // When swiping between different sections, select the corresponding
         // tab. We can also use ActionBar.Tab#select() to do this if we have
         // a reference to the Tab.
@@ -195,25 +190,4 @@ public class MainActivity extends Activity implements ActionBar.TabListener {
             return rootView;
         }
     }
-public  class MyPagerAdapter extends FragmentPagerAdapter {
-
-    private final String[] titles = {"Tab 1", "Tab 2"};
-
-    public MyPagerAdapter (FragmentManager fm) {super(fm);}
-
-    @Override
-    public CharSequence getPageTitle (int position){
-        return titles[position];
-    }
-
-    @Override
-    public int getCount(){
-        return titles.length;
-    }
-
-    @Override
-    public  Fragment getItem(int position) {
-        return SuperAwesomeCardFragment.newInstance(position);
-    }
-}
 }
